@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spin & Reveal: Ultimate Bottle Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --neon-purple: #8a2be2;
+            --neon-pink: #ff00ff;
+            --dark-bg: #0f011f;
+            --medium-bg: #1a0033;
+            --light-bg: #2d0052;
+            --text-color: #ffffff;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark-bg), var(--medium-bg));
+            color: var(--text-color);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 2px solid var(--neon-purple);
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple);
+            animation: pulsate 2s infinite alternate;
+        }
+        
+        @keyframes pulsate {
+            0% { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple); }
+            100% { text-shadow: 0 0 15px #9370db, 0 0 30px #9370db, 0 0 45px #9370db; }
+        }
+        
+        .game-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .bottle-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            background: rgba(34, 0, 51, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+        }
+        
+        .bottle {
+            width: 120px;
+            height: 300px;
+            position: relative;
+            margin: 40px 0;
+            transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+        
+        .bottle-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 15px var(--neon-purple)) hue-rotate(0deg);
+            animation: glow 3s infinite alternate;
+        }
+        
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 10px var(--neon-purple)) hue-rotate(0deg); }
+            100% { filter: drop-shadow(0 0 20px #9370db) hue-rotate(10deg); }
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(90deg, #4b0082, var(--neon-purple));
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+        }
+        
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(138, 43, 226, 1);
+        }
+        
+        .result-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 20px;
+            background: rgba(34, 0, 51, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .result-box {
+            background: rgba(54, 0, 81, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+        }
+        
+        .result-type {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--neon-purple);
+        }
+        
+        .result-question {
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+        
+        .players-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .player {
+            padding: 10px 20px;
+            background: rgba(54, 0, 81, 0.8);
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .player-remove {
+            background: rgba(255, 0, 0, 0.3);
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+            justify-content: center;
+        }
+        
+        .category {
+            padding: 12px 25px;
+            background: rgba(54, 0, 81, 0.8);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+        }
+        
+        .category.active {
+            background: linear-gradient(90deg, #4b0082, var(--neon-purple));
+            box-shadow: 0 0 15px rgba(138, 43, 226, 1);
+        }
+        
+        .instructions {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(34, 0, 51, 0.7);
+            border-radius: 15px;
+            line-height: 1.6;
+        }
+        
+        .player-form {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .player-input {
+            flex: 1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .game-area {
+                flex-direction: column;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Spin & Reveal</h1>
+            <p>The Ultimate Truth or Dare Experience!</p>
+        </header>
+        
+        <div class="category-selector">
+            <div class="category active" data-category="family">Family Friendly</div>
+            <div class="category" data-category="friends">Friends</div>
+            <div class="category" data-category="couples">Couples</div>
+            <div class="category" data-category="naughty">Naughty</div>
+            <div class="category" data-category="adult">18+</div>
+        </div>
+        
+        <div class="game-area">
+            <div class="bottle-container">
+                <div class="bottle">
+                    <!-- We'll use a CSS-generated bottle since we don't have the image -->
+                    <img src="assets/images/bottle.png" alt="Bottle" class="bottle-img" id="bottle-img">    
+                </div>
+                
+                <div class="controls">
+                    <button id="spin-btn">SPIN THE BOTTLE</button>
+                    
+                    <div class="player-form">
+                        <input type="text" class="player-input" id="player-input" placeholder="Player name">
+                        <button id="add-player">ADD PLAYER</button>
+                    </div>
+                </div>
+                
+                <div class="players-container" id="players-container">
+                    <div class="player">
+                        <span>Player 1</span>
+                        <button class="player-remove">×</button>
+                    </div>
+                    <div class="player">
+                        <span>Player 2</span>
+                        <button class="player-remove">×</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-container">
+                <h2>RESULT</h2>
+                <div class="result-box">
+                    <div class="result-type" id="result-type">TRUTH</div>
+                    <div class="result-question" id="result-question">Click SPIN to get a question</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>How to Play</h3>
+            <p>1. Select a category that matches your group</p>
+            <p>2. Add all players using the ADD PLAYER button</p>
+            <p>3. Click SPIN THE BOTTLE to start the game</p>
+            <p>4. The bottle will spin and land on either Truth or Dare with a question</p>
+            <p>5. The selected player must answer the question or perform the dare!</p>
+        </div>
+    </div>
+
+    <script>
+        // Question databases for each category
+        const questions = {
+            family: {
+                truth: [
+                    "What's the most embarrassing thing your parents have caught you doing?",
+                    "If you could swap places with any family member for a day, who would it be and why?",
+                    "What's a secret talent you have that no one in your family knows about?",
+                    "What's the worst present you've ever received from a family member?",
+                    "Which family member are you most similar to and why?",
+                    "What's the biggest lie you've told your parents?",
+                    "If you could change one family rule, what would it be?",
+                    "What's your favorite family tradition?",
+                    "Which family member would you take on a road trip and why?",
+                    "What's the funniest memory you have with your family?",
+                    "What's the nicest thing a family member has done for you?",
+                    "If you could have any celebrity join your family, who would it be?",
+                    "What's your favorite meal that your family makes?",
+                    "Which family member gives the best advice?",
+                    "What's something your family does that you thought was normal but isn't?",
+                    "If your family had a theme song, what would it be?",
+                    "What's the most annoying habit of a family member?",
+                    "What's the best vacation you've taken with your family?",
+                    "Which family member are you most likely to go to with a problem?",
+                    "What's a family secret you're willing to share?",
+                    // Add 180+ more questions here
+                ],
+                dare: [
+                    "Do your best impression of a family member.",
+                    "Call a relative and sing them Happy Birthday (even if it's not their birthday).",
+                    "Let another player style your hair for the next 3 rounds.",
+                    "Act out a scene from your favorite family movie.",
+                    "Tell a funny story about your family in a foreign accent.",
+                    "Do 10 pushups while naming all your cousins.",
+                    "Draw a portrait of the person to your right with your eyes closed.",
+                    "Speak in rhyme for the next 5 minutes.",
+                    "Wear socks on your hands for the next two rounds.",
+                    "Make up a short poem about the person to your left.",
+                    "Do a silly dance for 30 seconds.",
+                    "Let the group choose an outfit for you to wear for the next hour.",
+                    "Act like a chicken until your next turn.",
+                    "Say the alphabet backwards.",
+                    "Do an impression of your favorite cartoon character.",
+                    "Let someone tickle you for 30 seconds without laughing.",
+                    "Attempt to do a magic trick.",
+                    "Speak in a British accent for the next 10 minutes.",
+                    "Do 20 jumping jacks while singing a nursery rhyme.",
+                    "Balance a book on your head for 5 minutes.",
+                    // Add 180+ more dares here
+                ]
+            },
+            friends: {
+                truth: [
+                    "What's the most embarrassing thing you've done in front of your friends?",
+                    "Which friend would you trust with your deepest secret and why?",
+                    "What's the craziest thing you've ever done with your friends?",
+                    "Have you ever had a crush on a friend's sibling?",
+                    "What's one thing your friends don't know about you?",
+                    "Which friend would survive a zombie apocalypse and why?",
+                    "What's the worst lie you've told to impress your friends?",
+                    "If you could swap lives with any friend for a week, who would it be?",
+                    "What's the most valuable thing a friend has done for you?",
+                    "Which friend is most likely to become famous and why?",
+                    "What's the funniest memory you have with your friends?",
+                    "Have you ever betrayed a friend's trust?",
+                    "Which friend would you want with you on a deserted island?",
+                    "What's the most embarrassing photo you have with your friends?",
+                    "Which friend has the worst fashion sense?",
+                    "What's the biggest secret you've kept for a friend?",
+                    "Which friend is the best at cheering you up?",
+                    "What's the wildest party you've been to with friends?",
+                    "Which friend would you never want to work with?",
+                    "What's the most trouble you've gotten into with friends?",
+                    // Add 180+ more questions here
+                ],
+                dare: [
+                    "Let the group text anyone from your phone.",
+                    "Do an interpretive dance of your favorite song.",
+                    "Speak in a British accent for the next 10 minutes.",
+                    "Let the group post a status update on your social media.",
+                    "Call a friend and confess your love for pizza in a dramatic way.",
+                    "Wear your clothes backwards for the next round.",
+                    "Do your best impression of the person to your right.",
+                    "Let the group give you a new hairstyle.",
+                    "Sing the chorus of your favorite song as opera.",
+                    "Attempt to breakdance for 30 seconds.",
+                    "Let someone draw on your face with a washable marker.",
+                    "Do 20 squats while reciting a poem.",
+                    "Sing a song with your mouth full of water.",
+                    "Do a handstand against the wall for 30 seconds.",
+                    "Let the group choose your profile picture for a day.",
+                    "Speak like a robot for the next 10 minutes.",
+                    "Try to lick your elbow.",
+                    "Do your best celebrity impression.",
+                    "Let the group choose what you eat for your next meal.",
+                    "Attempt to juggle three items.",
+                    // Add 180+ more dares here
+                ]
+            },
+            couples: {
+                truth: [
+                    "What was your first impression of your partner?",
+                    "What's the most romantic thing you've ever done for someone?",
+                    "What's your partner's most annoying habit?",
+                    "What's the sweetest thing your partner has ever done for you?",
+                    "When did you know you were in love with your partner?",
+                    "What's your favorite physical feature of your partner?",
+                    "What's the biggest challenge in your relationship?",
+                    "If you could change one thing about your partner, what would it be?",
+                    "What's the most embarrassing thing that's happened to you on a date?",
+                    "What's your favorite memory of your relationship?",
+                    "What's your partner's biggest turn-on?",
+                    "What's the biggest fight you've ever had?",
+                    "What's something your partner does that always makes you smile?",
+                    "Where do you see your relationship in 5 years?",
+                    "What's the most adventurous thing you've done together?",
+                    "What's your partner's most embarrassing habit?",
+                    "What's the most romantic place you've been together?",
+                    "What's your favorite thing to do together?",
+                    "What's something you've never told your partner?",
+                    "What's the best gift you've ever received from your partner?",
+                    // Add 180+ more questions here
+                ],
+                dare: [
+                    "Kiss your partner without using your hands.",
+                    "Whisper the sweetest thing you can think of in your partner's ear.",
+                    "Recreate your first date with your partner.",
+                    "Carry your partner across the room.",
+                    "Slow dance with your partner for one minute.",
+                    "Feed your partner blindfolded.",
+                    "Describe your partner using only three words.",
+                    "Give your partner a 2-minute massage.",
+                    "Serenade your partner with a love song.",
+                    "Tell your partner three things you love about them.",
+                    "Recreate your first kiss.",
+                    "Write a short love poem for your partner.",
+                    "Gaze into your partner's eyes for 60 seconds without looking away.",
+                    "Let your partner style your hair however they want.",
+                    "Draw a portrait of your partner with your non-dominant hand.",
+                    "Tell your partner a secret you've never shared before.",
+                    "Cook your partner's favorite meal together.",
+                    "Plan a dream vacation together in 2 minutes.",
+                    "Take 5 silly selfies with your partner.",
+                    "Tell your partner what you first noticed about them.",
+                    // Add 180+ more dares here
+                ]
+            },
+            naughty: {
+                truth: [
+                    "What's the most embarrassing place you've ever hooked up with someone?",
+                    "What's your biggest turn-on?",
+                    "What's the wildest dream you've ever had about someone?",
+                    "What's the most inappropriate time you've gotten turned on?",
+                    "What's your secret fantasy?",
+                    "What's the naughtiest text you've ever sent?",
+                    "What's the most risqué thing you've done in public?",
+                    "What's your guilty pleasure?",
+                    "What's the biggest mistake you've made in a relationship?",
+                    "What's the most adventurous place you've been intimate?",
+                    "What's the most embarrassing thing a partner has caught you doing?",
+                    "What's your opinion on public displays of affection?",
+                    "What's the worst pick-up line you've ever used?",
+                    "What's the most romantic thing you've done in bed?",
+                    "What's your favorite type of foreplay?",
+                    "What's the most unusual place you've fantasized about?",
+                    "What's your favorite position?",
+                    "What's the longest you've gone without sex?",
+                    "What's your favorite part of the male/female body?",
+                    "What's the most embarrassing thing you've said during sex?",
+                    // Add 180+ more questions here
+                ],
+                dare: [
+                    "Let the person to your left give you a hickey.",
+                    "Take off one piece of clothing.",
+                    "Kiss the person to your right for 10 seconds.",
+                    "Show the last text you sent your crush.",
+                    "Demonstrate your seductive walk.",
+                    "Let someone blindfold you and feed you something.",
+                    "Describe your perfect partner in detail.",
+                    "Impersonate a famous celebrity trying to seduce someone.",
+                    "Whisper your fantasy to the person across from you.",
+                    "Let the group choose your dating profile picture.",
+                    "Give a lap dance to the person of your choice.",
+                    "Let the group choose your next Tinder bio.",
+                    "Do 10 pushups with someone sitting on your back.",
+                    "Show the most embarrassing photo on your phone.",
+                    "Let someone draw on your skin with a marker.",
+                    "Try to seduce the person to your left.",
+                    "Do a striptease for 30 seconds.",
+                    "Describe what makes a good lover in detail.",
+                    "Let the group give you a new nickname.",
+                    "Demonstrate how you would propose to someone.",
+                    // Add 180+ more dares here
+                ]
+            },
+            adult: {
+                truth: [
+                    "What's the most embarrassing thing that's happened to you during sex?",
+                    "What's your wildest sexual fantasy?",
+                    "What's the most unusual place you've had sex?",
+                    "What's the biggest lie you've told to get someone into bed?",
+                    "What's your favorite position?",
+                    "What's the most partners you've had at once?",
+                    "What's the longest you've gone without sex?",
+                    "What's your opinion on threesomes?",
+                    "What's the most adventurous thing you've done sexually?",
+                    "What's your biggest sexual regret?",
+                    "What's the most embarrassing noise you've made during sex?",
+                    "What's your favorite type of role play?",
+                    "What's the worst sexual experience you've ever had?",
+                    "What's your opinion on sex toys?",
+                    "What's the most public place you've had sex?",
+                    "What's your favorite time of day for sex?",
+                    "What's the most number of times you've had sex in one day?",
+                    "What's your biggest turn-off?",
+                    "What's the most romantic sexual experience you've had?",
+                    "What's your opinion on watching porn?",
+                    // Add 180+ more questions here
+                ],
+                dare: [
+                    "Remove an article of clothing.",
+                    "Kiss the person to your left passionately.",
+                    "Demonstrate how you would seduce someone at a bar.",
+                    "Show your most embarrassing photo on your phone.",
+                    "Let the group see your browser history.",
+                    "Describe your last sexual encounter in detail.",
+                    "Let someone draw on your body with a marker.",
+                    "Perform a lap dance for the person of your choice.",
+                    "Imitate a porn star for one minute.",
+                    "Tell the group about your first time.",
+                    "Demonstrate your best orgasm face.",
+                    "Let the group choose what you drink next.",
+                    "Do a body shot off someone.",
+                    "Show the last person you texted and what you said.",
+                    "Let someone handcuff you for the next round.",
+                    "Tell the group your favorite body part on yourself.",
+                    "Describe your perfect sexual partner in detail.",
+                    "Let the group choose your outfit for the rest of the game.",
+                    "Do a sexy dance for the group.",
+                    "Tell the group about your wildest sexual fantasy.",
+                    // Add 180+ more dares here
+                ]
+            }
+        };
+
+        // DOM elements
+        const bottleImg = document.getElementById('bottle-img');
+        const spinBtn = document.getElementById('spin-btn');
+        const addPlayerBtn = document.getElementById('add-player');
+        const playerInput = document.getElementById('player-input');
+        const playersContainer = document.getElementById('players-container');
+        const resultType = document.getElementById('result-type');
+        const resultQuestion = document.getElementById('result-question');
+        const categories = document.querySelectorAll('.category');
+        
+        // Game state
+        let currentCategory = 'family';
+        let players = ['Player 1', 'Player 2'];
+        let isSpinning = false;
+        
+        // Set initial active category
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                categories.forEach(c => c.classList.remove('active'));
+                category.classList.add('active');
+                currentCategory = category.getAttribute('data-category');
+            });
+        });
+        
+        // Add player functionality
+        addPlayerBtn.addEventListener('click', () => {
+            const playerName = playerInput.value.trim();
+            if (playerName) {
+                const newPlayer = document.createElement('div');
+                newPlayer.className = 'player';
+                newPlayer.innerHTML = `
+                    <span>${playerName}</span>
+                    <button class="player-remove">×</button>
+                `;
+                playersContainer.appendChild(newPlayer);
+                players.push(playerName);
+                playerInput.value = '';
+                
+                // Add event listener to remove button
+                newPlayer.querySelector('.player-remove').addEventListener('click', () => {
+                    const index = players.indexOf(playerName);
+                    if (index > -1) {
+                        players.splice(index, 1);
+                    }
+                    newPlayer.remove();
+                });
+            }
+        });
+        
+        // Add event listener for Enter key in player input
+        playerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                addPlayerBtn.click();
+            }
+        });
+        
+        // Spin the bottle functionality
+        spinBtn.addEventListener('click', () => {
+            if (isSpinning) return;
+            if (players.length === 0) {
+                alert("Please add at least one player!");
+                return;
+            }
+            
+            isSpinning = true;
+            const spins = 5 + Math.random() * 5; // Random number of spins between 5-10
+            const degrees = 1440 + Math.floor(Math.random() * 360); // Random angle between 1440-1800 degrees
+            
+            // Apply spinning animation
+            bottleImg.style.transition = `transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67)`;
+            bottleImg.style.transform = `rotate(${degrees}deg)`;
+            
+            // After spinning animation completes
+            setTimeout(() => {
+                // Determine if it's truth or dare (50/50 chance)
+                const isTruth = Math.random() > 0.5;
+                const type = isTruth ? 'truth' : 'dare';
+                
+                // Get random question from the selected category
+                const categoryQuestions = questions[currentCategory][type];
+                const randomIndex = Math.floor(Math.random() * categoryQuestions.length);
+                const question = categoryQuestions[randomIndex];
+                
+                // Select a random player
+                const randomPlayerIndex = Math.floor(Math.random() * players.length);
+                const selectedPlayer = players[randomPlayerIndex];
+                
+                // Display result
+                resultType.textContent = type.toUpperCase();
+                resultQuestion.innerHTML = `<strong>${selectedPlayer}:</strong> ${question}`;
+                
+                // Add some visual effects
+                resultType.parentElement.style.background = `rgba(${isTruth ? '0, 100, 0' : '139, 0, 0'}, 0.7)`;
+                
+                isSpinning = false;
+            }, 3000);
+        });
+        
+        // Initialize with some sample players
+        players.forEach((player, index) => {
+            const playerEl = document.createElement('div');
+            playerEl.className = 'player';
+            playerEl.innerHTML = `
+                <span>${player}</span>
+                <button class="player-remove">×</button>
+            `;
+            playersContainer.appendChild(playerEl);
+            
+            // Add event listener to remove button
+            playerEl.querySelector('.player-remove').addEventListener('click', () => {
+                const index = players.indexOf(player);
+                if (index > -1) {
+                    players.splice(index, 1);
+                }
+                playerEl.remove();
+            });
+        });
+    </script>
+</body>
+</html>
