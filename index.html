@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +12,7 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         :root {
             --neon-purple: #8a2be2;
             --neon-pink: #ff00ff;
@@ -20,7 +21,7 @@
             --light-bg: #2d0052;
             --text-color: #ffffff;
         }
-        
+
         body {
             background: linear-gradient(135deg, var(--dark-bg), var(--medium-bg));
             color: var(--text-color);
@@ -28,39 +29,44 @@
             padding: 20px;
             overflow-x: hidden;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             text-align: center;
             margin-bottom: 30px;
             padding: 20px;
             border-bottom: 2px solid var(--neon-purple);
         }
-        
+
         h1 {
             font-size: 3.5rem;
             margin-bottom: 10px;
             text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple);
             animation: pulsate 2s infinite alternate;
         }
-        
+
         @keyframes pulsate {
-            0% { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple); }
-            100% { text-shadow: 0 0 15px #9370db, 0 0 30px #9370db, 0 0 45px #9370db; }
+            0% {
+                text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple);
+            }
+
+            100% {
+                text-shadow: 0 0 15px #9370db, 0 0 30px #9370db, 0 0 45px #9370db;
+            }
         }
-        
+
         .game-area {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: center;
         }
-        
+
         .bottle-container {
             flex: 1;
             min-width: 300px;
@@ -73,7 +79,7 @@
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
         }
-        
+
         .bottle {
             width: 120px;
             height: 300px;
@@ -81,7 +87,7 @@
             margin: 40px 0;
             transition: transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67);
         }
-        
+
         .bottle-img {
             width: 100%;
             height: 100%;
@@ -89,12 +95,17 @@
             filter: drop-shadow(0 0 15px var(--neon-purple)) hue-rotate(0deg);
             animation: glow 3s infinite alternate;
         }
-        
+
         @keyframes glow {
-            0% { filter: drop-shadow(0 0 10px var(--neon-purple)) hue-rotate(0deg); }
-            100% { filter: drop-shadow(0 0 20px #9370db) hue-rotate(10deg); }
+            0% {
+                filter: drop-shadow(0 0 10px var(--neon-purple)) hue-rotate(0deg);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 20px #9370db) hue-rotate(10deg);
+            }
         }
-        
+
         .controls {
             display: flex;
             flex-direction: column;
@@ -102,7 +113,7 @@
             width: 100%;
             margin-top: 20px;
         }
-        
+
         button {
             padding: 15px 20px;
             border: none;
@@ -115,12 +126,12 @@
             transition: all 0.3s;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
         }
-        
+
         button:hover {
             transform: translateY(-3px);
             box-shadow: 0 0 15px rgba(138, 43, 226, 1);
         }
-        
+
         .result-container {
             flex: 1;
             min-width: 300px;
@@ -133,7 +144,7 @@
             flex-direction: column;
             gap: 20px;
         }
-        
+
         .result-box {
             background: rgba(54, 0, 81, 0.8);
             padding: 20px;
@@ -146,18 +157,18 @@
             text-align: center;
             box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
         }
-        
+
         .result-type {
             font-size: 2.5rem;
             margin-bottom: 15px;
             text-shadow: 0 0 10px var(--neon-purple);
         }
-        
+
         .result-question {
             font-size: 1.4rem;
             line-height: 1.5;
         }
-        
+
         .players-container {
             display: flex;
             flex-wrap: wrap;
@@ -165,7 +176,7 @@
             margin-top: 20px;
             justify-content: center;
         }
-        
+
         .player {
             padding: 10px 20px;
             background: rgba(54, 0, 81, 0.8);
@@ -175,7 +186,7 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .player-remove {
             background: rgba(255, 0, 0, 0.3);
             border: none;
@@ -188,7 +199,7 @@
             align-items: center;
             justify-content: center;
         }
-        
+
         .category-selector {
             display: flex;
             flex-wrap: wrap;
@@ -196,7 +207,7 @@
             margin: 20px 0;
             justify-content: center;
         }
-        
+
         .category {
             padding: 12px 25px;
             background: rgba(54, 0, 81, 0.8);
@@ -205,12 +216,12 @@
             transition: all 0.3s;
             box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
         }
-        
+
         .category.active {
             background: linear-gradient(90deg, #4b0082, var(--neon-purple));
             box-shadow: 0 0 15px rgba(138, 43, 226, 1);
         }
-        
+
         .instructions {
             margin-top: 30px;
             padding: 20px;
@@ -218,13 +229,13 @@
             border-radius: 15px;
             line-height: 1.6;
         }
-        
+
         .player-form {
             margin-top: 15px;
             display: flex;
             gap: 10px;
         }
-        
+
         .player-input {
             flex: 1;
             padding: 10px 15px;
@@ -233,25 +244,25 @@
             background: rgba(255, 255, 255, 0.1);
             color: white;
         }
-        
+
         @media (max-width: 768px) {
             .game-area {
                 flex-direction: column;
             }
-            
+
             h1 {
                 font-size: 2.5rem;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>Spin & Reveal</h1>
             <p>The Ultimate Truth or Dare Experience!</p>
         </header>
-        
         <div class="category-selector">
             <div class="category active" data-category="family">Family Friendly</div>
             <div class="category" data-category="friends">Friends</div>
@@ -259,23 +270,19 @@
             <div class="category" data-category="naughty">Naughty</div>
             <div class="category" data-category="adult">18+</div>
         </div>
-        
         <div class="game-area">
             <div class="bottle-container">
                 <div class="bottle">
                     <!-- We'll use a CSS-generated bottle since we don't have the image -->
-                    <img src="assets/images/bottle.png" alt="Bottle" class="bottle-img" id="bottle-img">    
+                    <img src="assets/images/bottle.png" alt="Bottle" class="bottle-img" id="bottle-img">
                 </div>
-                
                 <div class="controls">
                     <button id="spin-btn">SPIN THE BOTTLE</button>
-                    
                     <div class="player-form">
                         <input type="text" class="player-input" id="player-input" placeholder="Player name">
                         <button id="add-player">ADD PLAYER</button>
                     </div>
                 </div>
-                
                 <div class="players-container" id="players-container">
                     <div class="player">
                         <span>Player 1</span>
@@ -287,7 +294,6 @@
                     </div>
                 </div>
             </div>
-            
             <div class="result-container">
                 <h2>RESULT</h2>
                 <div class="result-box">
@@ -296,7 +302,6 @@
                 </div>
             </div>
         </div>
-        
         <div class="instructions">
             <h3>How to Play</h3>
             <p>1. Select a category that matches your group</p>
@@ -306,7 +311,6 @@
             <p>5. The selected player must answer the question or perform the dare!</p>
         </div>
     </div>
-
     <script>
         // Question databases for each category
         const questions = {
@@ -380,7 +384,86 @@
                     "What's the wildest party you've been to with friends?",
                     "Which friend would you never want to work with?",
                     "What's the most trouble you've gotten into with friends?",
-                    // Add 180+ more questions here
+                    "Which friend gives the best advice?",
+                    "What's the most ridiculous rumor you've heard about yourself?",
+                    "Which friend would win in a fight against everyone else?",
+                    "What's the worst gift you've ever given a friend?",
+                    "Which friend is most likely to get arrested?",
+                    "What's the most embarrassing thing a friend has caught you doing?",
+                    "Which friend would make the worst roommate?",
+                    "What's the best prank you've ever pulled on a friend?",
+                    "Which friend is the best cook?",
+                    "What's the most money you've ever owed a friend?",
+                    "Which friend would you trust to plan your birthday party?",
+                    "What's the worst date a friend has set you up on?",
+                    "Which friend has the best taste in music?",
+                    "What's the longest you've gone without talking to your best friend?",
+                    "Which friend would you want to be stranded with?",
+                    "What's the most embarrassing thing you've said to a crush in front of friends?",
+                    "Which friend is the best dancer?",
+                    "What's the worst haircut you've gotten because a friend suggested it?",
+                    "Which friend would you trust with your social media passwords?",
+                    "What's the best trip you've taken with friends?",
+                    "Which friend is the best driver?",
+                    "What's the most illegal thing you've done with friends?",
+                    "Which friend would win in a singing competition?",
+                    "What's the worst joke you've ever told that made friends uncomfortable?",
+                    "Which friend is most likely to become a millionaire?",
+                    "What's the best piece of advice a friend has given you?",
+                    "Which friend would you want to be your lawyer?",
+                    "What's the most embarrassing thing you've done while drunk with friends?",
+                    "Which friend is the best at keeping secrets?",
+                    "What's the worst fashion trend you and your friends followed?",
+                    "Which friend would you want as your emergency contact?",
+                    "What's the most dangerous thing you've done with friends?",
+                    "Which friend is the best at sports?",
+                    "What's the worst cooking disaster you've had with friends?",
+                    "Which friend would you trust to house-sit for you?",
+                    "What's the best concert you've been to with friends?",
+                    "Which friend is the best at video games?",
+                    "What's the most embarrassing song on your playlist that friends found?",
+                    "Which friend would you want to be on a game show with?",
+                    "What's the worst vacation you've taken with friends?",
+                    "Which friend is the best at giving gifts?",
+                    "What's the most trouble you've gotten a friend into?",
+                    "Which friend would you want to be your personal trainer?",
+                    "What's the best inside joke you have with friends?",
+                    "Which friend is the best at imitations?",
+                    "What's the worst decision you've made because friends dared you?",
+                    "Which friend would you trust to plan a surprise party for you?",
+                    "What's the most embarrassing thing you've cried about in front of friends?",
+                    "Which friend is the best at telling stories?",
+                    "What's the best meal a friend has cooked for you?",
+                    "Which friend would you want to be your therapist?",
+                    "What's the worst karaoke performance you've given with friends?",
+                    "Which friend is the best at photography?",
+                    "What's the most money you've spent on a friend?",
+                    "Which friend would you want to be your business partner?",
+                    "What's the best Halloween costume you've worn with friends?",
+                    "Which friend is the best at remembering birthdays?",
+                    "What's the worst tattoo idea a friend has talked you out of?",
+                    "Which friend would you trust to choose your outfit for a date?",
+                    "What's the best road trip you've taken with friends?",
+                    "Which friend is the best at giving relationship advice?",
+                    "What's the most embarrassing thing you've posted on social media that friends won't let you forget?",
+                    "Which friend would you want to be your wedding planner?",
+                    "What's the worst gift a friend has given you?",
+                    "Which friend is the best at keeping plants alive?",
+                    "What's the best prank a friend has pulled on you?",
+                    "Which friend would you trust to name your future child?",
+                    "What's the most embarrassing thing you've done to impress a crush in front of friends?",
+                    "Which friend is the best at budgeting?",
+                    "What's the worst fashion advice a friend has given you?",
+                    "Which friend would you want to be your life coach?",
+                    "What's the best party you've thrown with friends?",
+                    "Which friend is the best at keeping calm in emergencies?",
+                    "What's the most embarrassing thing you've borrowed from a friend and never returned?",
+                    "Which friend would you trust to be your designated driver?",
+                    "What's the worst DIY project you've attempted with friends?",
+                    "Which friend is the best at remembering movie quotes?",
+                    "What's the best spontaneous adventure you've had with friends?",
+                    "Which friend would you want to be your podcast co-host?",
+                    "What's the most embarrassing thing you've done to get a friend's attention?"
                 ],
                 dare: [
                     "Let the group text anyone from your phone.",
@@ -403,7 +486,86 @@
                     "Do your best celebrity impression.",
                     "Let the group choose what you eat for your next meal.",
                     "Attempt to juggle three items.",
-                    // Add 180+ more dares here
+                    "Let the group create a dating profile for you.",
+                    "Do 10 pushups while singing the national anthem.",
+                    "Speak in rhyme for the next 5 minutes.",
+                    "Let someone style your outfit from another player's closet.",
+                    "Do your best impression of a famous movie scene.",
+                    "Let the group give you a new nickname for the rest of the game.",
+                    "Attempt to do the worm dance move.",
+                    "Sing a nursery rhyme in a heavy metal voice.",
+                    "Let someone paint your nails with whatever they choose.",
+                    "Do 15 jumping jacks while reciting the alphabet backwards.",
+                    "Speak only in questions for the next 10 minutes.",
+                    "Let the group choose your next Instagram story.",
+                    "Do your best impression of a animal of the group's choice.",
+                    "Attempt to touch your tongue to your nose.",
+                    "Let someone give you a makeover with whatever they find.",
+                    "Do a fashion show modeling the weirdest outfit you can create.",
+                    "Speak in a different accent for each sentence you say.",
+                    "Let the group choose who you have to compliment for the next hour.",
+                    "Do your best impression of a superhero.",
+                    "Attempt to recite a poem while standing on one leg.",
+                    "Let someone style your hair using only condiments.",
+                    "Do 20 sit-ups while naming all the US states.",
+                    "Speak like a pirate for the next 10 minutes.",
+                    "Let the group choose your next text message to send.",
+                    "Do your best impression of a famous politician.",
+                    "Attempt to balance a book on your head while walking across the room.",
+                    "Let someone create a new signature dance move for you to perform.",
+                    "Do a dramatic reading of a cereal box.",
+                    "Speak in reverse sentences for the next 5 minutes.",
+                    "Let the group choose your next Netflix show to binge.",
+                    "Do your best impression of a weather reporter.",
+                    "Attempt to do a cartwheel.",
+                    "Let someone draw a tattoo on your arm with permanent marker.",
+                    "Do 10 lunges while naming all the planets in order.",
+                    "Speak like you're in a Shakespeare play for the next 10 minutes.",
+                    "Let the group choose your next phone background.",
+                    "Do your best impression of a game show host.",
+                    "Attempt to recite the pledge of allegiance while hopping on one foot.",
+                    "Let someone create a new Instagram bio for you.",
+                    "Do a commercial for a product chosen by the group.",
+                    "Speak like a valley girl for the next 10 minutes.",
+                    "Let the group choose your next TikTok video idea.",
+                    "Do your best impression of a famous singer.",
+                    "Attempt to do the moonwalk.",
+                    "Let someone give you a new identity for the next hour.",
+                    "Do 15 jumping jacks while naming all the Harry Potter books.",
+                    "Speak like a news anchor for the next 10 minutes.",
+                    "Let the group choose your next YouTube search.",
+                    "Do your best impression of a cartoon character.",
+                    "Attempt to do a handstand against the wall.",
+                    "Let someone create a new catchphrase for you to use all night.",
+                    "Do a dramatic reenactment of a famous historical event.",
+                    "Speak like a robot for the next 10 minutes.",
+                    "Let the group choose your next Amazon purchase.",
+                    "Do your best impression of a famous athlete.",
+                    "Attempt to do the floss dance.",
+                    "Let someone give you a new hairstyle using only office supplies.",
+                    "Do 20 squats while naming all the Disney princesses.",
+                    "Speak like a cowboy for the next 10 minutes.",
+                    "Let the group choose your next Spotify playlist.",
+                    "Do your best impression of a famous actor.",
+                    "Attempt to do a split.",
+                    "Let someone create a new signature for you.",
+                    "Do a weather forecast for the room you're in.",
+                    "Speak like a baby for the next 10 minutes.",
+                    "Let the group choose your next Google search.",
+                    "Do your best impression of a famous comedian.",
+                    "Attempt to do a backbend.",
+                    "Let someone give you a new name for the rest of the night.",
+                    "Do 15 pushups while naming all the months backwards.",
+                    "Speak like a detective for the next 10 minutes.",
+                    "Let the group choose your next Facebook post.",
+                    "Do your best impression of a famous historical figure.",
+                    "Attempt to do the running man dance.",
+                    "Let someone create a new email signature for you.",
+                    "Do a sports commentary for a random household object.",
+                    "Speak like a superhero for the next 10 minutes.",
+                    "Let the group choose your next Pinterest board idea.",
+                    "Do your best impression of a famous scientist.",
+                    "Attempt to do a handstand without using the wall for support."
                 ]
             },
             couples: {
@@ -428,7 +590,86 @@
                     "What's your favorite thing to do together?",
                     "What's something you've never told your partner?",
                     "What's the best gift you've ever received from your partner?",
-                    // Add 180+ more questions here
+                    "What's your partner's love language?",
+                    "What's the longest you've gone without seeing each other?",
+                    "What's your favorite nickname for your partner?",
+                    "What's the most thoughtful surprise you've planned for your partner?",
+                    "What's your idea of a perfect date night?",
+                    "What's the first thing you noticed about your partner?",
+                    "What's your partner's most endearing quality?",
+                    "What's the most difficult thing you've overcome as a couple?",
+                    "What's your favorite song as a couple?",
+                    "What's the best trip you've taken together?",
+                    "What's your partner's biggest fear?",
+                    "What's the most romantic gesture you've made?",
+                    "What's your favorite way to spend a lazy Sunday together?",
+                    "What's the best meal your partner has cooked for you?",
+                    "What's your partner's dream vacation?",
+                    "What's the funniest moment you've shared together?",
+                    "What's your favorite inside joke?",
+                    "What's the most spontaneous thing you've done together?",
+                    "What's your partner's hidden talent?",
+                    "What's the best piece of relationship advice you've received?",
+                    "What's your favorite movie to watch together?",
+                    "What's the longest conversation you've ever had?",
+                    "What's your partner's go-to comfort food?",
+                    "What's the best cuddle position?",
+                    "What's your favorite memory from early in your relationship?",
+                    "What's your partner's morning routine?",
+                    "What's the most thoughtful gift you've given your partner?",
+                    "What's your favorite photo of the two of you?",
+                    "What's your partner's favorite childhood memory?",
+                    "What's the best double date you've been on?",
+                    "What's your favorite thing about your partner's personality?",
+                    "What's the most challenging time you've supported each other through?",
+                    "What's your favorite restaurant to visit together?",
+                    "What's your partner's favorite way to relax?",
+                    "What's the best concert you've attended together?",
+                    "What's your favorite holiday to celebrate together?",
+                    "What's your partner's proudest accomplishment?",
+                    "What's the best Netflix series you've binge-watched together?",
+                    "What's your favorite road trip memory?",
+                    "What's your partner's favorite quality about you?",
+                    "What's the best advice your partner has given you?",
+                    "What's your favorite breakfast in bed memory?",
+                    "What's your partner's favorite family tradition?",
+                    "What's the most romantic text you've received from your partner?",
+                    "What's your favorite way to surprise your partner?",
+                    "What's your partner's favorite memory of your relationship?",
+                    "What's the best homemade gift you've received?",
+                    "What's your favorite thing to cook together?",
+                    "What's your partner's favorite way to be cheered up?",
+                    "What's the best lazy day you've spent together?",
+                    "What's your favorite couple costume idea?",
+                    "What's your partner's favorite physical feature of you?",
+                    "What's the most supportive thing your partner has done for you?",
+                    "What's your favorite rainy day activity together?",
+                    "What's your partner's favorite love song?",
+                    "What's the best game you play together?",
+                    "What's your favorite memory from your first year together?",
+                    "What's your partner's favorite way to celebrate achievements?",
+                    "What's the best piece of furniture to cuddle on?",
+                    "What's your favorite tradition you've created together?",
+                    "What's your partner's favorite way to spend quality time?",
+                    "What's the most memorable birthday you've celebrated together?",
+                    "What's your favorite couple activity?",
+                    "What's your partner's favorite thing you do for them?",
+                    "What's the best vacation you've dreamed of taking together?",
+                    "What's your favorite way to resolve disagreements?",
+                    "What's your partner's favorite season to experience with you?",
+                    "What's the most romantic vacation you've taken?",
+                    "What's your favorite way to show appreciation?",
+                    "What's your partner's favorite memory of you?",
+                    "What's the best home improvement project you've tackled together?",
+                    "What's your favorite way to greet each other after time apart?",
+                    "What's your partner's favorite way to be surprised?",
+                    "What's the most challenging recipe you've cooked together?",
+                    "What's your favorite couple fitness activity?",
+                    "What's your partner's favorite way to decompress with you?",
+                    "What's the best star-gazing memory you share?",
+                    "What's your favorite quality time activity?",
+                    "What's your partner's favorite thing about your relationship?",
+                    "What's the best life decision you've made together?",
                 ],
                 dare: [
                     "Kiss your partner without using your hands.",
@@ -451,7 +692,86 @@
                     "Plan a dream vacation together in 2 minutes.",
                     "Take 5 silly selfies with your partner.",
                     "Tell your partner what you first noticed about them.",
-                    // Add 180+ more dares here
+                    "Give your partner a foot rub.",
+                    "Read a romantic passage to your partner.",
+                    "Recreate your favorite photo together.",
+                    "Tell your partner about your favorite memory of them.",
+                    "Let your partner choose your outfit for the day.",
+                    "Write your partner's name somewhere on your body.",
+                    "Give your partner a piggyback ride around the room.",
+                    "Share your favorite childhood memory with your partner.",
+                    "Let your partner teach you something new.",
+                    "Create a couple's handshake together.",
+                    "Tell your partner what you appreciate most about them.",
+                    "Give your partner a scalp massage.",
+                    "Plan a surprise date for your partner.",
+                    "Tell your partner what made you fall in love with them.",
+                    "Let your partner brush your hair.",
+                    "Share your dream future together in detail.",
+                    "Give your partner a shoulder massage.",
+                    "Tell your partner your favorite thing they do for you.",
+                    "Let your partner paint your nails.",
+                    "Share your favorite quality about your partner's personality.",
+                    "Give your partner a hand massage.",
+                    "Tell your partner what you're most grateful for about them.",
+                    "Let your partner choose a movie for tonight.",
+                    "Share your favorite physical feature of your partner.",
+                    "Give your partner a back scratch.",
+                    "Tell your partner what you admire most about them.",
+                    "Let your partner feed you something delicious.",
+                    "Share your favorite couple memory.",
+                    "Give your partner a neck massage.",
+                    "Tell your partner what you're looking forward to experiencing together.",
+                    "Let your partner style your hair.",
+                    "Share your favorite thing to do together.",
+                    "Give your partner a hand kiss.",
+                    "Tell your partner what makes them unique.",
+                    "Let your partner teach you a dance move.",
+                    "Share your favorite way to spend time together.",
+                    "Give your partner a eskimo kiss.",
+                    "Tell your partner what you've learned from them.",
+                    "Let your partner choose your next vacation destination.",
+                    "Share your favorite thing about your partner's smile.",
+                    "Give your partner a butterfly kiss.",
+                    "Tell your partner what you dream about together.",
+                    "Let your partner pick out your accessories.",
+                    "Share your favorite quality time activity.",
+                    "Give your partner a forehead kiss.",
+                    "Tell your partner what you value most in your relationship.",
+                    "Let your partner choose your next hobby to try together.",
+                    "Share your favorite thing about your partner's laugh.",
+                    "Give your partner a nose boop.",
+                    "Tell your partner what you're proud of them for.",
+                    "Let your partner plan your weekend.",
+                    "Share your favorite way your partner supports you.",
+                    "Give your partner a cheek kiss.",
+                    "Tell your partner what you find most attractive about them.",
+                    "Let your partner choose your next book to read together.",
+                    "Share your favorite romantic gesture from your partner.",
+                    "Give your partner a temple massage.",
+                    "Tell your partner what you enjoy doing for them.",
+                    "Let your partner teach you their favorite skill.",
+                    "Share your favorite way to relax together.",
+                    "Give your partner a hand hug.",
+                    "Tell your partner what you appreciate about their family.",
+                    "Let your partner choose your next game to play together.",
+                    "Share your favorite thing about your partner's cooking.",
+                    "Give your partner a ear massage.",
+                    "Tell your partner what you respect most about them.",
+                    "Let your partner plan your next date night.",
+                    "Share your favorite way to celebrate with your partner.",
+                    "Give your partner a jaw massage.",
+                    "Tell your partner what you've grown to love about them.",
+                    "Let your partner choose your next DIY project together.",
+                    "Share your favorite thing about your partner's voice.",
+                    "Give your partner a finger massage.",
+                    "Tell your partner what you're excited to experience together.",
+                    "Let your partner teach you about their interests.",
+                    "Share your favorite way to communicate with your partner.",
+                    "Give your partner a wrist massage.",
+                    "Tell your partner what you've built together that you're proud of.",
+                    "Let your partner plan your next adventure together.",
+                    "Share your favorite thing about growing together as a couple."
                 ]
             },
             naughty: {
@@ -476,7 +796,166 @@
                     "What's the longest you've gone without sex?",
                     "What's your favorite part of the male/female body?",
                     "What's the most embarrassing thing you've said during sex?",
-                    // Add 180+ more questions here
+                    "What's your opinion on sending flirty texts?",
+                    "What's the wildest thing you've done to get someone's attention?",
+                    "What's your favorite type of kiss?",
+                    "What's the most spontaneous thing you've done for a crush?",
+                    "What's your opinion on dating apps?",
+                    "What's the most adventurous date you've been on?",
+                    "What's your favorite type of compliment to receive?",
+                    "What's the most number of people you've dated at once?",
+                    "What's your opinion on long-distance relationships?",
+                    "What's the wildest place you've made out with someone?",
+                    "What's your favorite type of date night?",
+                    "What's the most embarrassing thing you've done while drunk?",
+                    "What's your opinion on friends with benefits?",
+                    "What's the wildest party you've ever been to?",
+                    "What's your favorite type of dance?",
+                    "What's the most number of shots you've taken in one night?",
+                    "What's your opinion on kissing on the first date?",
+                    "What's the most adventurous thing you've done on vacation?",
+                    "What's your favorite type of alcohol?",
+                    "What's the most embarrassing song on your playlist?",
+                    "What's your opinion on skinny dipping?",
+                    "What's the wildest dare you've ever completed?",
+                    "What's your favorite type of beach activity?",
+                    "What's the most number of people you've kissed in one night?",
+                    "What's your opinion on truth or dare games?",
+                    "What's the most adventurous thing you've done with friends?",
+                    "What's your favorite type of party game?",
+                    "What's the most embarrassing photo on your phone?",
+                    "What's your opinion on lap dances?",
+                    "What's the wildest costume you've ever worn?",
+                    "What's your favorite type of Halloween costume?",
+                    "What's the most number of days you've gone without showering?",
+                    "What's your opinion on massages?",
+                    "What's the most adventurous thing you've done outdoors?",
+                    "What's your favorite type of summer activity?",
+                    "What's the most embarrassing thing you've searched online?",
+                    "What's your opinion on role-playing?",
+                    "What's the wildest dream you've had about a celebrity?",
+                    "What's your favorite type of movie to watch with a date?",
+                    "What's the most number of hours you've spent on social media?",
+                    "What's your opinion on love at first sight?",
+                    "What's the most adventurous thing you've done for love?",
+                    "What's your favorite type of romantic gesture?",
+                    "What's the most embarrassing thing you've posted online?",
+                    "What's your opinion on public proposals?",
+                    "What's the wildest wedding you've ever attended?",
+                    "What's your favorite type of wedding dance?",
+                    "What's the most number of dates you've been on in a week?",
+                    "What's your opinion on blind dates?",
+                    "What's the most adventurous thing you've done on a date?",
+                    "What's your favorite type of date activity?",
+                    "What's the most embarrassing thing you've said to a crush?",
+                    "What's your opinion on double dating?",
+                    "What's the wildest breakup you've ever had?",
+                    "What's your favorite type of breakup song?",
+                    "What's the most number of times you've texted an ex?",
+                    "What's your opinion on getting back with an ex?",
+                    "What's the most adventurous thing you've done after a breakup?",
+                    "What's your favorite type of revenge?",
+                    "What's the most embarrassing thing you've done to impress someone?",
+                    "What's your opinion on love letters?",
+                    "What's the wildest rumor you've heard about yourself?",
+                    "What's your favorite type of gossip?",
+                    "What's the most number of secrets you've kept for friends?",
+                    "What's your opinion on sharing relationship details with friends?",
+                    "What's the most adventurous thing you've done with your best friend?",
+                    "What's your favorite type of friend activity?",
+                    "What's the most embarrassing thing your friends know about you?",
+                    "What's your opinion on wingmen/wingwomen?",
+                    "What's the wildest party trick you know?",
+                    "What's your favorite type of party drink?",
+                    "What's the most number of cocktails you've had in one night?",
+                    "What's your opinion on karaoke?",
+                    "What's the most adventurous karaoke song you've performed?",
+                    "What's your favorite type of dance move?",
+                    "What's the most embarrassing thing you've done on the dance floor?",
+                    "What's your opinion on dance battles?",
+                    "What's the wildest concert you've ever been to?",
+                    "What's your favorite type of music to make out to?",
+                    "What's the most number of hours you've spent making out?",
+                    "What's your opinion on hickeys?",
+                    "What's the most adventurous place you've given someone a hickey?",
+                    "What's your favorite type of neck kiss?",
+                    "What's the most embarrassing place you've gotten a hickey?",
+                    "What's your opinion on love bites?",
+                    "What's the wildest place you've been caught making out?",
+                    "What's your favorite type of make-out spot?",
+                    "What's the most number of people who've seen you making out?",
+                    "What's your opinion on PDA?",
+                    "What's the most adventurous public place you've been intimate?",
+                    "What's your favorite type of public place to be naughty?",
+                    "What's the most embarrassing time you've been caught being naughty?",
+                    "What's your opinion on risqué photos?",
+                    "What's the wildest photo you've ever taken?",
+                    "What's your favorite type of filter for selfies?",
+                    "What's the most number of selfies you've taken in one day?",
+                    "What's your opinion on mirror selfies?",
+                    "What's the most adventurous angle for a selfie?",
+                    "What's your favorite type of background for photos?",
+                    "What's the most embarrassing photo you've been tagged in?",
+                    "What's your opinion on photo bombs?",
+                    "What's the wildest photo bomb you've done?",
+                    "What's your favorite type of group photo?",
+                    "What's the most number of people in a group photo you've been in?",
+                    "What's your opinion on candid photos?",
+                    "What's the most adventurous photo you've ever taken?",
+                    "What's your favorite type of camera pose?",
+                    "What's the most embarrassing pose you've done for a photo?",
+                    "What's your opinion on duck faces?",
+                    "What's the wildest face you've made in a photo?",
+                    "What's your favorite type of photo editing app?",
+                    "What's the most number of filters you've used on one photo?",
+                    "What's your opinion on photoshopping pictures?",
+                    "What's the most adventurous edit you've made to a photo?",
+                    "What's your favorite type of photo to post online?",
+                    "What's the most embarrassing like you've given on social media?",
+                    "What's your opinion on sliding into DMs?",
+                    "What's the wildest DM you've ever sent?",
+                    "What's your favorite type of DM to receive?",
+                    "What's the most number of DMs you've sent in one day?",
+                    "What's your opinion on online flirting?",
+                    "What's the most adventurous online date you've been on?",
+                    "What's your favorite type of emoji to use when flirting?",
+                    "What's the most embarrassing emoji you've overused?",
+                    "What's your opinion on winky faces?",
+                    "What's the wildest text conversation you've had?",
+                    "What's your favorite type of text to receive from a crush?",
+                    "What's the most number of heart emojis you've used in one text?",
+                    "What's your opinion on good morning texts?",
+                    "What's the most adventurous good night text you've sent?",
+                    "What's your favorite type of pet name?",
+                    "What's the most embarrassing pet name you've been called?",
+                    "What's your opinion on baby talk?",
+                    "What's the wildest nickname you've given someone?",
+                    "What's your favorite type of compliment to give?",
+                    "What's the most number of compliments you've given in one day?",
+                    "What's your opinion on cheesy pick-up lines?",
+                    "What's the most adventurous compliment you've received?",
+                    "What's your favorite type of flirty question?",
+                    "What's the most embarrassing answer you've given to a flirty question?",
+                    "What's your opinion on truth or dare?",
+                    "What's the wildest truth you've ever been asked?",
+                    "What's your favorite type of dare?",
+                    "What's the most number of dares you've completed in one game?",
+                    "What's your opinion on spin the bottle?",
+                    "What's the most adventurous kiss you've had during spin the bottle?",
+                    "What's your favorite type of party game?",
+                    "What's the most embarrassing moment you've had during a party game?",
+                    "What's your opinion on seven minutes in heaven?",
+                    "What's the wildest thing you've done in seven minutes?",
+                    "What's your favorite type of drinking game?",
+                    "What's the most number of drinking games you've played in one night?",
+                    "What's your opinion on beer pong?",
+                    "What's the most adventurous beer p shot you've made?",
+                    "What's your favorite type of party?",
+                    "What's the most embarrassing thing you've done at a party?",
+                    "What's your opinion on after-parties?",
+                    "What's the wildest after-party you've been to?",
+                    "What's your favorite type of party snack?",
+                    "What's the most number of parties you've attended in one week?",
                 ],
                 dare: [
                     "Let the person to your left give you a hickey.",
@@ -499,7 +978,166 @@
                     "Describe what makes a good lover in detail.",
                     "Let the group give you a new nickname.",
                     "Demonstrate how you would propose to someone.",
-                    // Add 180+ more dares here
+                    "Let someone style your hair in a crazy way.",
+                    "Do your best impression of a romantic movie scene.",
+                    "Show your most recent search history.",
+                    "Let the group choose your next social media post.",
+                    "Describe your ideal first date in detail.",
+                    "Kiss the person with the best smile.",
+                    "Let someone give you a shoulder massage.",
+                    "Do your best animal impression.",
+                    "Show your favorite childhood photo.",
+                    "Let the group see your camera roll for 10 seconds.",
+                    "Describe your dream wedding.",
+                    "Kiss the person with the softest hands.",
+                    "Let someone feed you with their eyes closed.",
+                    "Do your best impression of a celebrity.",
+                    "Show your most used emojis.",
+                    "Let the group see your music playlist.",
+                    "Describe your perfect kiss.",
+                    "Kiss the person with the best hair.",
+                    "Let someone paint your nails.",
+                    "Do your best impression of a dancer.",
+                    "Show your favorite Instagram picture.",
+                    "Let the group see your Netflix watch history.",
+                    "Describe your ideal partner.",
+                    "Kiss the person with the best style.",
+                    "Let someone give you a foot massage.",
+                    "Do your best impression of a singer.",
+                    "Show your most liked social media post.",
+                    "Let the group see your Amazon search history.",
+                    "Describe your favorite date night.",
+                    "Kiss the person who makes you laugh the most.",
+                    "Let someone brush your hair.",
+                    "Do your best impression of a actor.",
+                    "Show your favorite meme.",
+                    "Let the group see your YouTube history.",
+                    "Describe your most romantic moment.",
+                    "Kiss the person with the best eyes.",
+                    "Let someone give you a back scratch.",
+                    "Do your best impression of a comedian.",
+                    "Show your favorite vacation picture.",
+                    "Let the group see your Pinterest board.",
+                    "Describe your dream vacation.",
+                    "Kiss the person with the best voice.",
+                    "Let someone put makeup on you.",
+                    "Do your best impression of a news anchor.",
+                    "Show your favorite family photo.",
+                    "Let the group see your Facebook memories.",
+                    "Describe your favorite holiday.",
+                    "Kiss the person with the best energy.",
+                    "Let someone draw on your arm.",
+                    "Do your best impression of a weather reporter.",
+                    "Show your favorite landscape picture.",
+                    "Let the group see your Spotify wrapped.",
+                    "Describe your favorite season.",
+                    "Kiss the person with the best personality.",
+                    "Let someone give you a hand massage.",
+                    "Do your best impression of a chef.",
+                    "Show your favorite party picture.",
+                    "Let the group see your Twitter likes.",
+                    "Describe your favorite party.",
+                    "Kiss the person with the best laugh.",
+                    "Let someone style your outfit.",
+                    "Do your best impression of a fitness instructor.",
+                    "Show your favorite wedding photo.",
+                    "Let the group see your Reddit history.",
+                    "Describe your favorite wedding moment.",
+                    "Kiss the person with the best smile.",
+                    "Let someone give you a foot rub.",
+                    "Do your best impression of a life coach.",
+                    "Show your favorite nature picture.",
+                    "Let the group see your LinkedIn profile.",
+                    "Describe your favorite outdoor activity.",
+                    "Kiss the person with the best eyes.",
+                    "Let someone draw on your leg.",
+                    "Do your best impression of a motivational speaker.",
+                    "Show your favorite city picture.",
+                    "Let the group see your Goodreads list.",
+                    "Describe your favorite book.",
+                    "Kiss the person with the best voice.",
+                    "Let someone give you a neck massage.",
+                    "Do your best impression of a tour guide.",
+                    "Show your favorite beach picture.",
+                    "Let the group see your Duolingo progress.",
+                    "Describe your favorite language.",
+                    "Kiss the person with the best energy.",
+                    "Let someone style your hair.",
+                    "Do your best impression of a podcast host.",
+                    "Show your favorite mountain picture.",
+                    "Let the group see your Strava activities.",
+                    "Describe your favorite exercise.",
+                    "Kiss the person with the best personality.",
+                    "Let someone give you a hand massage.",
+                    "Do your best impression of a radio DJ.",
+                    "Show your favorite sunset picture.",
+                    "Let the group see your Venmo transactions.",
+                    "Describe your favorite purchase.",
+                    "Kiss the person with the best style.",
+                    "Let someone draw on your back.",
+                    "Do your best impression of a sports commentator.",
+                    "Show your favorite animal picture.",
+                    "Let the group see your Uber history.",
+                    "Describe your favorite ride.",
+                    "Kiss the person with the best smile.",
+                    "Let someone give you a shoulder rub.",
+                    "Do your best impression of a movie critic.",
+                    "Show your favorite food picture.",
+                    "Let the group see your Airbnb reviews.",
+                    "Describe your favorite trip.",
+                    "Kiss the person with the best laugh.",
+                    "Let someone style your outfit.",
+                    "Do your best impression of a fashion designer.",
+                    "Show your favorite drink picture.",
+                    "Let the group see your food delivery history.",
+                    "Describe your favorite meal.",
+                    "Kiss the person with the best eyes.",
+                    "Let someone feed you something sweet.",
+                    "Do your best impression of a food critic.",
+                    "Show your favorite dessert picture.",
+                    "Let the group see your recipe searches.",
+                    "Describe your favorite dessert.",
+                    "Kiss the person with the best voice.",
+                    "Let someone give you a scalp massage.",
+                    "Do your best impression of a baker.",
+                    "Show your favorite baking creation.",
+                    "Let the group see your cooking fails.",
+                    "Describe your favorite kitchen memory.",
+                    "Kiss the person with the best energy.",
+                    "Let someone draw on your face.",
+                    "Do your best impression of a bartender.",
+                    "Show your favorite cocktail.",
+                    "Let the group see your drink recipes.",
+                    "Describe your favorite bar experience.",
+                    "Kiss the person with the best personality.",
+                    "Let someone make you a drink.",
+                    "Do your best impression of a sommelier.",
+                    "Show your favorite wine bottle.",
+                    "Let the group see your alcohol purchases.",
+                    "Describe your favorite wine tasting.",
+                    "Kiss the person with the best smile.",
+                    "Let someone give you a hand massage.",
+                    "Do your best impression of a brewer.",
+                    "Show your favorite beer.",
+                    "Let the group see your brewery visits.",
+                    "Describe your favorite pub crawl.",
+                    "Kiss the person with the best eyes.",
+                    "Let someone challenge you to a drinking game.",
+                    "Do your best impression of a party animal.",
+                    "Show your favorite party trick.",
+                    "Let the group see your party photos.",
+                    "Describe your favorite celebration.",
+                    "Kiss the person with the best voice.",
+                    "Let someone teach you a dance move.",
+                    "Do your best impression of a dancer.",
+                    "Show your favorite dance video.",
+                    "Let the group see your dance attempts.",
+                    "Describe your favorite dance floor moment.",
+                    "Kiss the person with the best energy.",
+                    "Let someone give you a dance lesson.",
+                    "Do your best impression of a dance instructor.",
+                    "Show your favorite concert picture.",
+                    "Let the group see your music festival experiences."
                 ]
             },
             adult: {
@@ -524,7 +1162,166 @@
                     "What's your biggest turn-off?",
                     "What's the most romantic sexual experience you've had?",
                     "What's your opinion on watching porn?",
-                    // Add 180+ more questions here
+                    "What's the most inappropriate time you've gotten turned on?",
+                    "What's your favorite type of foreplay?",
+                    "What's the biggest age difference between you and a partner?",
+                    "What's the most spontaneous place you've had sex?",
+                    "What's your opinion on one-night stands?",
+                    "What's your favorite body part on a partner?",
+                    "What's the kinkiest thing you've ever done?",
+                    "What's your opinion on sending nudes?",
+                    "What's the most adventurous place you've masturbated?",
+                    "What's your favorite type of lingerie?",
+                    "What's the most embarrassing thing a partner has caught you doing?",
+                    "What's your opinion on open relationships?",
+                    "What's the wildest dream you've had about someone?",
+                    "What's your favorite type of porn?",
+                    "What's the most number of orgasms you've had in one session?",
+                    "What's your biggest turn-on?",
+                    "What's the most risqué thing you've done in public?",
+                    "What's your opinion on bondage?",
+                    "What's the most adventurous thing you want to try sexually?",
+                    "What's your guilty pleasure?",
+                    "What's the most embarrassing place you've been caught having sex?",
+                    "What's your opinion on sexting?",
+                    "What's the wildest thing you've done to attract someone?",
+                    "What's your favorite type of kiss?",
+                    "What's the most number of times you've masturbated in a day?",
+                    "What's your opinion on casual sex?",
+                    "What's the most adventurous role play you've tried?",
+                    "What's your favorite type of dirty talk?",
+                    "What's the most public place you've masturbated?",
+                    "What's your opinion on group sex?",
+                    "What's the most embarrassing thing you've said during sex?",
+                    "What's your favorite type of stimulation?",
+                    "What's the most spontaneous sexual encounter you've had?",
+                    "What's your opinion on anal sex?",
+                    "What's the most adventurous place you've had oral sex?",
+                    "What's your favorite type of orgasm?",
+                    "What's the most number of partners you've had in a week?",
+                    "What's your opinion on BDSM?",
+                    "What's the wildest sexual compliment you've received?",
+                    "What's your favorite type of foreplay?",
+                    "What's the most embarrassing sexual purchase you've made?",
+                    "What's your opinion on phone sex?",
+                    "What's the most adventurous sexual position you've tried?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most public place you've been intimate?",
+                    "What's your opinion on sex parties?",
+                    "What's the most embarrassing sexual dream you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most spontaneous sexual act you've performed?",
+                    "What's your opinion on polyamory?",
+                    "What's the wildest sexual experience you've had?",
+                    "What's your favorite type of sexual tease?",
+                    "What's the most number of times you've had sex in a week?",
+                    "What's your opinion on public displays of affection?",
+                    "What's the most adventurous sexual toy you've used?",
+                    "What's your favorite type of sexual game?",
+                    "What's the most embarrassing sexual confession you've made?",
+                    "What's your opinion on sexual fantasies?",
+                    "What's the wildest sexual position you've tried?",
+                    "What's your favorite type of sexual adventure?",
+                    "What's the most public place you've been caught masturbating?",
+                    "What's your opinion on sexual experimentation?",
+                    "What's the most embarrassing sexual moment you've had?",
+                    "What's your favorite type of sexual stimulation?",
+                    "What's the most spontaneous sexual encounter you've initiated?",
+                    "What's your opinion on sexual freedom?",
+                    "What's the wildest sexual dream you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of orgasms you've given someone?",
+                    "What's your opinion on sexual exploration?",
+                    "What's the most adventurous sexual experience you've had?",
+                    "What's your favorite type of sexual position?",
+                    "What's the most public place you've had oral sex?",
+                    "What's your opinion on sexual openness?",
+                    "What's the most embarrassing sexual experience you've had?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most spontaneous sexual act you've done?",
+                    "What's your opinion on sexual variety?",
+                    "What's the wildest sexual compliment you've given?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of partners you've had in a month?",
+                    "What's your opinion on sexual adventures?",
+                    "What's the most adventurous sexual position you've tried?",
+                    "What's your favorite type of sexual tease?",
+                    "What's the most public place you've been intimate?",
+                    "What's your opinion on sexual freedom?",
+                    "What's the most embarrassing sexual purchase you've made?",
+                    "What's your favorite type of sexual game?",
+                    "What's the most spontaneous sexual encounter you've had?",
+                    "What's your opinion on sexual exploration?",
+                    "What's the wildest sexual experience you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of times you've had sex in a day?",
+                    "What's your opinion on sexual experimentation?",
+                    "What's the most adventurous sexual toy you've used?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most public place you've masturbated?",
+                    "What's your opinion on sexual openness?",
+                    "What's the most embarrassing sexual moment you've had?",
+                    "What's your favorite type of sexual stimulation?",
+                    "What's the most spontaneous sexual act you've performed?",
+                    "What's your opinion on sexual variety?",
+                    "What's the wildest sexual dream you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of orgasms you've had in one session?",
+                    "What's your opinion on sexual adventures?",
+                    "What's the most adventurous sexual experience you've had?",
+                    "What's your favorite type of sexual position?",
+                    "What's the most public place you've had oral sex?",
+                    "What's your opinion on sexual freedom?",
+                    "What's the most embarrassing sexual experience you've had?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most spontaneous sexual act you've done?",
+                    "What's your opinion on sexual variety?",
+                    "What's the wildest sexual compliment you've given?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of partners you've had in a month?",
+                    "What's your opinion on sexual adventures?",
+                    "What's the most adventurous sexual position you've tried?",
+                    "What's your favorite type of sexual tease?",
+                    "What's the most public place you've been intimate?",
+                    "What's your opinion on sexual freedom?",
+                    "What's the most embarrassing sexual purchase you've made?",
+                    "What's your favorite type of sexual game?",
+                    "What's the most spontaneous sexual encounter you've had?",
+                    "What's your opinion on sexual exploration?",
+                    "What's the wildest sexual experience you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of times you've had sex in a day?",
+                    "What's your opinion on sexual experimentation?",
+                    "What's the most adventurous sexual toy you've used?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most public place you've masturbated?",
+                    "What's your opinion on sexual openness?",
+                    "What's the most embarrassing sexual moment you've had?",
+                    "What's your favorite type of sexual stimulation?",
+                    "What's the most spontaneous sexual act you've performed?",
+                    "What's your opinion on sexual variety?",
+                    "What's the wildest sexual dream you've had?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of orgasms you've given someone?",
+                    "What's your opinion on sexual exploration?",
+                    "What's the most adventurous sexual experience you've had?",
+                    "What's your favorite type of sexual position?",
+                    "What's the most public place you've had oral sex?",
+                    "What's your opinion on sexual openness?",
+                    "What's the most embarrassing sexual experience you've had?",
+                    "What's your favorite type of sexual fantasy?",
+                    "What's the most spontaneous sexual act you've done?",
+                    "What's your opinion on sexual variety?",
+                    "What's the wildest sexual compliment you've given?",
+                    "What's your favorite type of sexual activity?",
+                    "What's the most number of partners you've had in a month?",
+                    "What's your opinion on sexual adventures?",
+                    "What's the most adventurous sexual position you've tried?",
+                    "What's your favorite type of sexual tease?",
+                    "What's the most public place you've been intimate?",
+                    "What's your opinion on sexual freedom?",
+                    "What's the most embarrassing sexual purchase you've made?",
+                    "What's your favorite type of sexual game?",
                 ],
                 dare: [
                     "Remove an article of clothing.",
@@ -547,11 +1344,169 @@
                     "Let the group choose your outfit for the rest of the game.",
                     "Do a sexy dance for the group.",
                     "Tell the group about your wildest sexual fantasy.",
-                    // Add 180+ more dares here
+                    "Let someone give you a sensual massage.",
+                    "Whisper your dirtiest thought to the person on your right.",
+                    "Show us your best strip tease move.",
+                    "Let the group go through your photos for 30 seconds.",
+                    "Describe what you're wearing under your clothes.",
+                    "Kiss the person you find most attractive in the room.",
+                    "Let someone blindfold you and feed you something.",
+                    "Demonstrate how you would propose a threesome.",
+                    "Show your most recent search history.",
+                    "Let the group choose your next truth or dare.",
+                    "Describe your favorite sexual position in detail.",
+                    "Let someone style your hair however they want.",
+                    "Do 10 sexy poses in a row.",
+                    "Tell the group about your most embarrassing sexual experience.",
+                    "Let someone tickle you for 30 seconds without laughing.",
+                    "Demonstrate your best pick-up line.",
+                    "Show the group your favorite body part.",
+                    "Let someone give you a hickey.",
+                    "Describe your ideal romantic evening.",
+                    "Kiss the person to your right on the neck.",
+                    "Let the group see your most recent DM.",
+                    "Do your best impression of a celebrity trying to seduce someone.",
+                    "Show your most embarrassing childhood photo.",
+                    "Let someone draw a mustache on your face.",
+                    "Describe what turns you on the most.",
+                    "Kiss the person across from you on the lips.",
+                    "Let the group choose your social media status update.",
+                    "Do your best animal impression during sex.",
+                    "Show your phone's wallpaper and explain why you chose it.",
+                    "Let someone feed you with their eyes closed.",
+                    "Describe your worst date ever.",
+                    "Kiss the person who has the best smile.",
+                    "Let the group see your most used emojis.",
+                    "Do your best impression of a sexy celebrity.",
+                    "Show your most recent selfie.",
+                    "Let someone paint your nails.",
+                    "Describe your most adventurous sexual experience.",
+                    "Kiss the person with the best hair.",
+                    "Let the group see your music playlist.",
+                    "Do your best sexy walk across the room.",
+                    "Show your favorite Instagram picture.",
+                    "Let someone give you a foot massage.",
+                    "Describe your dream vacation with a partner.",
+                    "Kiss the person who has the best style.",
+                    "Let the group see your Netflix watch history.",
+                    "Do your best impression of a model on a runway.",
+                    "Show your most liked social media post.",
+                    "Let someone style your outfit for the rest of the game.",
+                    "Describe your perfect first date.",
+                    "Kiss the person who makes you laugh the most.",
+                    "Let the group see your camera roll for 10 seconds.",
+                    "Do your best impression of a romantic movie scene.",
+                    "Show your favorite meme.",
+                    "Let someone give you a shoulder massage.",
+                    "Describe your most romantic sexual experience.",
+                    "Kiss the person with the softest hands.",
+                    "Let the group see your most recent purchase.",
+                    "Do your best impression of a dancer in a music video.",
+                    "Show your favorite photo of yourself.",
+                    "Let someone brush your hair.",
+                    "Describe your favorite sexual memory.",
+                    "Kiss the person who has the best eyes.",
+                    "Let the group see your notes app.",
+                    "Do your best impression of a singer performing a love song.",
+                    "Show your favorite picture of a celebrity crush.",
+                    "Let someone give you a hand massage.",
+                    "Describe your ideal partner in detail.",
+                    "Kiss the person who has the best laugh.",
+                    "Let the group see your Amazon search history.",
+                    "Do your best impression of a actor in a romantic scene.",
+                    "Show your favorite vacation picture.",
+                    "Let someone put makeup on you.",
+                    "Describe your most spontaneous sexual experience.",
+                    "Kiss the person who has the best voice.",
+                    "Let the group see your YouTube history.",
+                    "Do your best impression of a reality TV star.",
+                    "Show your favorite pet picture.",
+                    "Let someone give you a back scratch.",
+                    "Describe your favorite sexual fantasy in detail.",
+                    "Kiss the person who has the best smile.",
+                    "Let the group see your TikTok likes.",
+                    "Do your best impression of a comedian telling a dirty joke.",
+                    "Show your favorite family photo.",
+                    "Let someone style your hair in a crazy way.",
+                    "Describe your most passionate kiss.",
+                    "Kiss the person who has the best style.",
+                    "Let the group see your Pinterest board.",
+                    "Do your best impression of a news anchor reporting a love story.",
+                    "Show your favorite landscape picture.",
+                    "Let someone give you a scalp massage.",
+                    "Describe your most intimate sexual experience.",
+                    "Kiss the person who has the best energy.",
+                    "Let the group see your Spotify wrapped.",
+                    "Do your best impression of a game show host.",
+                    "Show your favorite party picture.",
+                    "Let someone draw on your arm.",
+                    "Describe your most exciting sexual experience.",
+                    "Kiss the person who has the best personality.",
+                    "Let the group see your Facebook memories.",
+                    "Do your best impression of a weather reporter.",
+                    "Show your favorite holiday picture.",
+                    "Let someone give you a hand massage.",
+                    "Describe your most sensual sexual experience.",
+                    "Kiss the person who has the best style.",
+                    "Let the group see your Instagram likes.",
+                    "Do your best impression of a chef cooking a romantic meal.",
+                    "Show your favorite childhood photo.",
+                    "Let someone style your outfit.",
+                    "Describe your most adventurous sexual experience.",
+                    "Kiss the person who has the best smile.",
+                    "Let the group see your Twitter likes.",
+                    "Do your best impression of a fitness instructor.",
+                    "Show your favorite wedding photo.",
+                    "Let someone give you a foot rub.",
+                    "Describe your most romantic sexual experience.",
+                    "Kiss the person who has the best laugh.",
+                    "Let the group see your Reddit history.",
+                    "Do your best impression of a life coach.",
+                    "Show your favorite nature picture.",
+                    "Let someone draw on your leg.",
+                    "Describe your most spontaneous sexual experience.",
+                    "Kiss the person who has the best eyes.",
+                    "Let the group see your LinkedIn profile.",
+                    "Do your best impression of a motivational speaker.",
+                    "Show your favorite city picture.",
+                    "Let someone give you a neck massage.",
+                    "Describe your most passionate sexual experience.",
+                    "Kiss the person who has the best voice.",
+                    "Let the group see your Goodreads list.",
+                    "Do your best impression of a tour guide.",
+                    "Show your favorite beach picture.",
+                    "Let someone style your hair.",
+                    "Describe your most intimate sexual experience.",
+                    "Kiss the person who has the best energy.",
+                    "Let the group see your Duolingo progress.",
+                    "Do your best impression of a podcast host.",
+                    "Show your favorite mountain picture.",
+                    "Let someone give you a hand massage.",
+                    "Describe your most exciting sexual experience.",
+                    "Kiss the person who has the best personality.",
+                    "Let the group see your Strava activities.",
+                    "Do your best impression of a radio DJ.",
+                    "Show your favorite sunset picture.",
+                    "Let someone draw on your back.",
+                    "Describe your most sensual sexual experience.",
+                    "Kiss the person who has the best style.",
+                    "Let the group see your Venmo transactions.",
+                    "Do your best impression of a sports commentator.",
+                    "Show your favorite animal picture.",
+                    "Let someone give you a shoulder rub.",
+                    "Describe your most adventurous sexual experience.",
+                    "Kiss the person who has the best smile.",
+                    "Let the group see your Uber history.",
+                    "Do your best impression of a movie critic.",
+                    "Show your favorite food picture.",
+                    "Let someone style your outfit.",
+                    "Describe your most romantic sexual experience.",
+                    "Kiss the person who has the best laugh.",
+                    "Let the group see your Airbnb reviews.",
+                    "Do your best impression of a fashion designer.",
                 ]
             }
         };
-
         // DOM elements
         const bottleImg = document.getElementById('bottle-img');
         const spinBtn = document.getElementById('spin-btn');
@@ -561,12 +1516,10 @@
         const resultType = document.getElementById('result-type');
         const resultQuestion = document.getElementById('result-question');
         const categories = document.querySelectorAll('.category');
-        
         // Game state
         let currentCategory = 'family';
         let players = ['Player 1', 'Player 2'];
         let isSpinning = false;
-        
         // Set initial active category
         categories.forEach(category => {
             category.addEventListener('click', () => {
@@ -575,7 +1528,6 @@
                 currentCategory = category.getAttribute('data-category');
             });
         });
-        
         // Add player functionality
         addPlayerBtn.addEventListener('click', () => {
             const playerName = playerInput.value.trim();
@@ -589,7 +1541,6 @@
                 playersContainer.appendChild(newPlayer);
                 players.push(playerName);
                 playerInput.value = '';
-                
                 // Add event listener to remove button
                 newPlayer.querySelector('.player-remove').addEventListener('click', () => {
                     const index = players.indexOf(playerName);
@@ -600,14 +1551,12 @@
                 });
             }
         });
-        
         // Add event listener for Enter key in player input
         playerInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 addPlayerBtn.click();
             }
         });
-        
         // Spin the bottle functionality
         spinBtn.addEventListener('click', () => {
             if (isSpinning) return;
@@ -615,41 +1564,32 @@
                 alert("Please add at least one player!");
                 return;
             }
-            
             isSpinning = true;
             const spins = 5 + Math.random() * 5; // Random number of spins between 5-10
             const degrees = 1440 + Math.floor(Math.random() * 360); // Random angle between 1440-1800 degrees
-            
             // Apply spinning animation
             bottleImg.style.transition = `transform 3s cubic-bezier(0.17, 0.67, 0.83, 0.67)`;
             bottleImg.style.transform = `rotate(${degrees}deg)`;
-            
             // After spinning animation completes
             setTimeout(() => {
                 // Determine if it's truth or dare (50/50 chance)
                 const isTruth = Math.random() > 0.5;
                 const type = isTruth ? 'truth' : 'dare';
-                
                 // Get random question from the selected category
                 const categoryQuestions = questions[currentCategory][type];
                 const randomIndex = Math.floor(Math.random() * categoryQuestions.length);
                 const question = categoryQuestions[randomIndex];
-                
                 // Select a random player
                 const randomPlayerIndex = Math.floor(Math.random() * players.length);
                 const selectedPlayer = players[randomPlayerIndex];
-                
                 // Display result
                 resultType.textContent = type.toUpperCase();
                 resultQuestion.innerHTML = `<strong>${selectedPlayer}:</strong> ${question}`;
-                
                 // Add some visual effects
                 resultType.parentElement.style.background = `rgba(${isTruth ? '0, 100, 0' : '139, 0, 0'}, 0.7)`;
-                
                 isSpinning = false;
             }, 3000);
         });
-        
         // Initialize with some sample players
         players.forEach((player, index) => {
             const playerEl = document.createElement('div');
@@ -659,7 +1599,6 @@
                 <button class="player-remove">×</button>
             `;
             playersContainer.appendChild(playerEl);
-            
             // Add event listener to remove button
             playerEl.querySelector('.player-remove').addEventListener('click', () => {
                 const index = players.indexOf(player);
@@ -671,4 +1610,5 @@
         });
     </script>
 </body>
+
 </html>
